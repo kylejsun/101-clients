@@ -71,11 +71,6 @@
       transform: translateY(20px);
       animation: rise 0.6s ease forwards;
     }
-    .card:nth-child(1) { animation-delay: 0.05s; }
-    .card:nth-child(2) { animation-delay: 0.15s; }
-    .card:nth-child(3) { animation-delay: 0.25s; }
-    .card:nth-child(4) { animation-delay: 0.35s; }
-    .card:nth-child(5) { animation-delay: 0.45s; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
     .quote-mark {
       font-family: 'Lora', serif;
@@ -124,6 +119,8 @@
     }
     .name { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink); }
     .context { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* Featured styles — applied via JS */
     .card.featured {
       grid-column: 1 / -1;
       flex-direction: row;
@@ -132,13 +129,14 @@
       background: #fdf8f1;
     }
     .card.featured .quote-text { font-size: 18px; }
-    .card.featured .col-left { flex: 1; }
-    .card.featured .col-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+    .card.featured .card-body { flex: 1; }
+    .card.featured .card-footer {
+      border: none;
+      padding: 0;
       min-width: 200px;
+      align-self: flex-end;
     }
+
     footer { padding: 48px 24px; text-align: center; }
     .cta-label {
       font-size: 12px;
@@ -155,12 +153,13 @@
       text-decoration: none;
       border-bottom: 1.5px solid var(--accent);
       padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
+      transition: color 0.2s;
     }
     .cta-link:hover { color: var(--accent); }
+
     @media (max-width: 680px) {
       .card.featured { flex-direction: column; gap: 24px; }
-      .card.featured .col-right { min-width: unset; }
+      .card.featured .card-footer { min-width: unset; }
       header { padding: 56px 24px 48px; }
       .card { padding: 36px 28px; }
     }
@@ -169,93 +168,124 @@
 <body>
 
   <header>
-    <p class="eyebrow">Wall of Love</p>
+    <p class="eyebrow">Wall of Love &#9825;</p>
     <h1>101 people.<br><em>One experiment.</em></h1>
     <p class="sub">I'm coaching 101 strangers and friends to get crystal clear on what they want... and actually go after it. These are their words.</p>
   </header>
 
-  <div class="grid">
-
-    <!-- Client #4 Aaron - featured -->
-    <div class="card featured">
-      <div class="col-left">
-        <div class="quote-mark">&ldquo;</div>
-        <p class="quote-text">I just finished my 1-on-1 coaching session with Kyle, and it was a total game-changer. I've spent a lot of time watching videos and reading books, but Kyle was able to point out exactly where I was going wrong with my boundaries and confidence in real-time. He didn't just give me a theory — he gave me practical steps I can actually use. I walked away feeling way more clear on how to move past the friend zone and actually build attraction. I'm 100% sold on the program and can't wait to get started.</p>
-      </div>
-      <div class="col-right">
-        <div class="card-footer" style="border: none; padding: 0;">
-          <div class="client-num">4</div>
-          <div class="avatar"><img src="images/aaron.jpg" alt="Aaron C." /></div>
-          <div>
-            <div class="name">Aaron C.</div>
-            <div class="context">Software Engineer</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Client #1 Prosper -->
-    <div class="card">
-      <div class="quote-mark">&ldquo;</div>
-      <p class="quote-text">Thank you for being my homie and I really appreciate you for always pushing me to grow and keeping my head screwed on right. Thank you for being there when I was an addict and believing in me instead of giving up on me. Thanks for always checking up on me.</p>
-      <div class="card-footer">
-        <div class="client-num">1</div>
-        <div class="avatar"><img src="images/prosper.jpg" alt="Prosper C." /></div>
-        <div>
-          <div class="name">Prosper C.</div>
-          <div class="context">Founder & Content Creator</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Client #2 Vikram -->
-    <div class="card">
-      <div class="quote-mark">&ldquo;</div>
-      <p class="quote-text">Met with Kyle just now, talked about all my specific problems — social anxiety, second-guessing myself, goals, consistency, accountability, social activity, physical wellbeing. He was incredibly helpful and very oriented to the way I learn from the get-go. Asking me what I wanted and forcing me to really think about it helped me realize what goals I needed to set. His tips were, oddly, exactly what I needed to hear. It really gave me clarity and a clearing of my mental vision. Really fw his energy.</p>
-      <div class="card-footer">
-        <div class="client-num">2</div>
-        <div class="avatar"><img src="images/vikram.jpg" alt="Vikram J." /></div>
-        <div>
-          <div class="name">Vikram J.</div>
-          <div class="context">College Student</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Client #3 Kirsten -->
-    <div class="card">
-      <div class="quote-mark">&ldquo;</div>
-      <p class="quote-text">Speaking with Kyle was really helpful — it got me thinking about the things I'm struggling with in a different way. Our conversation encouraged me to not worry or fixate on the past, especially if it doesn't serve a purpose. I was able to dig deeper and better understand the underlying reasons I struggle with confidence and faith in myself. I was also able to envision what I want and how to achieve it, which helps me stay committed to my goals. Very glad I was able to join this coaching call.</p>
-      <div class="card-footer">
-        <div class="client-num">3</div>
-        <div class="avatar"><img src="images/kirsten.jpg" alt="Kirsten A." /></div>
-        <div>
-          <div class="name">Kirsten A.</div>
-          <div class="context">Writer</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Client #5 Rahman -->
-    <div class="card">
-      <div class="quote-mark">&ldquo;</div>
-      <p class="quote-text">Hey bro, I sincerely want to thank you for absolutely everything you've done. You are so receptive and give your all to everything you do for me. I've been trying to put my all into becoming the ideal Rahman. I feel like I've grown so so much. It's only been 2 weeks in the program and I feel such rapid growth from you alone. I feel fucking amazing.</p>
-      <div class="card-footer">
-        <div class="client-num">5</div>
-        <div class="avatar"><img src="images/rahman.jpg" alt="Rahman M." /></div>
-        <div>
-          <div class="name">Rahman M.</div>
-          <div class="context">Software Engineer</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <!-- Cards stored as data, rendered by JS in reverse-chron with random featured -->
+  <div class="grid" id="grid"></div>
 
   <footer>
-    <p class="cta-label">Ready to work together?</p>
-    <a href="mailto:kylejsun@gmail.com" class="cta-link">Get in touch &rarr;</a>
+    <p class="cta-label">Feeling stuck?</p>
+    <a href="mailto:kylejsun@gmail.com" class="cta-link">Let's chat &rarr;</a>
   </footer>
+
+  <script>
+    const clients = [
+      // ============================================================
+      // HOW TO ADD A NEW CLIENT:
+      // 1. Add a new object at the END of this array (below all others)
+      // 2. Increment `num` by 1 from the last entry
+      // 3. Add their photo to the `images/` folder as `firstname_clientnumber.jpg`
+      // 4. Fill in name, occupation, img path, and quote
+      //
+      // The page will automatically:
+      //   - Display newest clients first (reverse order of this array)
+      //   - Pick a random card as the featured (wide) card on each load
+      //
+      // DO NOT reorder existing entries — order = client number = chronological
+      // ============================================================
+      {
+        num: 1,
+        name: "Prosper C.",
+        occupation: "Founder & Content Creator",
+        img: "images/prosper_1.jpg",
+        quote: "Thank you for being my homie and I really appreciate you for always pushing me to grow and keeping my head screwed on right. Thank you for being there when I was an addict and believing in me instead of giving up on me. Thanks for always checking up on me."
+      },
+      {
+        num: 2,
+        name: "Vikram J.",
+        occupation: "College Student",
+        img: "images/vikram_2.jpg",
+        quote: "Met with Kyle just now, talked about all my specific problems — social anxiety, second-guessing myself, goals, consistency, accountability, social activity, physical wellbeing. He was incredibly helpful and very oriented to the way I learn from the get-go. Asking me what I wanted and forcing me to really think about it helped me realize what goals I needed to set. His tips were, oddly, exactly what I needed to hear. It really gave me clarity and a clearing of my mental vision. Really fw his energy."
+      },
+      {
+        num: 3,
+        name: "Kirsten A.",
+        occupation: "Writer",
+        img: "images/kirsten_3.jpg",
+        quote: "Speaking with Kyle was really helpful — it got me thinking about the things I'm struggling with in a different way. Our conversation encouraged me to not worry or fixate on the past, especially if it doesn't serve a purpose. I was able to dig deeper and better understand the underlying reasons I struggle with confidence and faith in myself. I was also able to envision what I want and how to achieve it, which helps me stay committed to my goals. Very glad I was able to join this coaching call."
+      },
+      {
+        num: 4,
+        name: "Aaron C.",
+        occupation: "Software Engineer",
+        img: "images/aaron_4.jpg",
+        quote: "I just finished my 1-on-1 coaching session with Kyle, and it was a total game-changer. I've spent a lot of time watching videos and reading books, but Kyle was able to point out exactly where I was going wrong with my boundaries and confidence in real-time. He didn't just give me a theory — he gave me practical steps I can actually use. I walked away feeling way more clear on how to move past the friend zone and actually build attraction. I'm 100% sold on the program and can't wait to get started."
+      },
+      {
+        num: 5,
+        name: "Rahman M.",
+        occupation: "Software Engineer",
+        img: "images/rahman_5.jpg",
+        quote: "Hey bro, I sincerely want to thank you for absolutely everything you've done. You are so receptive and give your all to everything you do for me. I've been trying to put my all into becoming the ideal Rahman. I feel like I've grown so so much. It's only been 2 weeks in the program and I feel such rapid growth from you alone. I feel fucking amazing."
+      }
+    ];
+
+    function buildCard(client, featured) {
+      const card = document.createElement('div');
+      card.className = 'card' + (featured ? ' featured' : '');
+
+      const body = document.createElement('div');
+      body.className = 'card-body';
+      body.innerHTML = `
+        <div class="quote-mark">&ldquo;</div>
+        <p class="quote-text">${client.quote}</p>
+      `;
+
+      const footer = document.createElement('div');
+      footer.className = 'card-footer';
+      footer.innerHTML = `
+        <div class="client-num">${client.num}</div>
+        <div class="avatar"><img src="${client.img}" alt="${client.name}" /></div>
+        <div>
+          <div class="name">${client.name}</div>
+          <div class="context">${client.occupation}</div>
+        </div>
+      `;
+
+      if (featured) {
+        card.appendChild(body);
+        card.appendChild(footer);
+      } else {
+        card.innerHTML = body.innerHTML;
+        card.appendChild(footer);
+      }
+
+      return card;
+    }
+
+    function render() {
+      const grid = document.getElementById('grid');
+      // Reverse-chron: newest (last in array) first
+      const ordered = [...clients].reverse();
+      const featuredIdx = Math.floor(Math.random() * ordered.length);
+
+      // Pull featured card to top, rest follow in reverse-chron order
+      const featured = ordered[featuredIdx];
+      const rest = ordered.filter((_, i) => i !== featuredIdx);
+      const sorted = [featured, ...rest];
+
+      sorted.forEach((client, i) => {
+        const card = buildCard(client, i === 0);
+        card.style.animationDelay = (i * 0.1) + 's';
+        grid.appendChild(card);
+      });
+    }
+
+    render();
+  </script>
 
 </body>
 </html>
