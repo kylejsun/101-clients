@@ -56,10 +56,11 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1px;
-      background: var(--rule);
+      gap: 20px;
+      padding: 24px;
       border-top: 1px solid var(--rule);
       border-bottom: 1px solid var(--rule);
+      background: var(--bg);
     }
     .card {
       background: var(--card);
@@ -67,6 +68,8 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
+      border-radius: 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       opacity: 0;
       transform: translateY(20px);
       animation: rise 0.6s ease forwards;
@@ -92,7 +95,6 @@
       align-items: center;
       gap: 14px;
       padding-top: 20px;
-      border-top: 1px solid var(--rule);
     }
     .client-num {
       font-family: 'Lora', serif;
@@ -119,24 +121,21 @@
     }
     .name { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink); }
     .context { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-    /* Featured styles — applied via JS */
     .card.featured {
       grid-column: 1 / -1;
       flex-direction: row;
       align-items: flex-start;
       gap: 48px;
       background: #fdf8f1;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
     .card.featured .quote-text { font-size: 18px; }
     .card.featured .card-body { flex: 1; }
     .card.featured .card-footer {
-      border: none;
       padding: 0;
       min-width: 200px;
       align-self: flex-end;
     }
-
     footer { padding: 48px 24px; text-align: center; }
     .cta-label {
       font-size: 12px;
@@ -156,7 +155,6 @@
       transition: color 0.2s;
     }
     .cta-link:hover { color: var(--accent); }
-
     @media (max-width: 680px) {
       .card.featured { flex-direction: column; gap: 24px; }
       .card.featured .card-footer { min-width: unset; }
@@ -170,14 +168,13 @@
   <header>
     <p class="eyebrow">Wall of Love &#9825;</p>
     <h1>101 people.<br><em>One experiment.</em></h1>
-    <p class="sub">I'm coaching 101 strangers and friends to get crystal clear on what they want... and actually go after it. These are their words.</p>
+    <p class="sub">Hey! I'm Kyle. I'm on a mission to coach 101 strangers and friends to get crystal clear on what they want... and actually go after it.<br>These are their words.</p>
   </header>
 
-  <!-- Cards stored as data, rendered by JS in reverse-chron with random featured -->
   <div class="grid" id="grid"></div>
 
   <footer>
-    <p class="cta-label">Feeling stuck?</p>
+    <p class="cta-label">Feeling stuck (or just curious)?</p>
     <a href="mailto:kylejsun@gmail.com" class="cta-link">Let's chat &rarr;</a>
   </footer>
 
@@ -239,45 +236,32 @@
 
       const body = document.createElement('div');
       body.className = 'card-body';
-      body.innerHTML = `
-        <div class="quote-mark">&ldquo;</div>
-        <p class="quote-text">${client.quote}</p>
-      `;
+      body.innerHTML =
+        '<div class="quote-mark">\u201C</div>' +
+        '<p class="quote-text">' + client.quote + '</p>';
 
       const footer = document.createElement('div');
       footer.className = 'card-footer';
-      footer.innerHTML = `
-        <div class="client-num">${client.num}</div>
-        <div class="avatar"><img src="${client.img}" alt="${client.name}" /></div>
-        <div>
-          <div class="name">${client.name}</div>
-          <div class="context">${client.occupation}</div>
-        </div>
-      `;
+      footer.innerHTML =
+        '<div class="client-num">' + client.num + '</div>' +
+        '<div class="avatar"><img src="' + client.img + '" alt="' + client.name + '" /></div>' +
+        '<div><div class="name">' + client.name + '</div><div class="context">' + client.occupation + '</div></div>';
 
-      if (featured) {
-        card.appendChild(body);
-        card.appendChild(footer);
-      } else {
-        card.innerHTML = body.innerHTML;
-        card.appendChild(footer);
-      }
+      card.appendChild(body);
+      card.appendChild(footer);
 
       return card;
     }
 
     function render() {
       const grid = document.getElementById('grid');
-      // Reverse-chron: newest (last in array) first
       const ordered = [...clients].reverse();
       const featuredIdx = Math.floor(Math.random() * ordered.length);
-
-      // Pull featured card to top, rest follow in reverse-chron order
       const featured = ordered[featuredIdx];
-      const rest = ordered.filter((_, i) => i !== featuredIdx);
-      const sorted = [featured, ...rest];
+      const rest = ordered.filter(function(_, i) { return i !== featuredIdx; });
+      const sorted = [featured].concat(rest);
 
-      sorted.forEach((client, i) => {
+      sorted.forEach(function(client, i) {
         const card = buildCard(client, i === 0);
         card.style.animationDelay = (i * 0.1) + 's';
         grid.appendChild(card);
