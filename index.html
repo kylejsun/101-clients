@@ -9,151 +9,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --ink: #1a1a18; --muted: #6b6b65; --rule: #e0ddd6;
-      --bg: #faf9f6; --card: #ffffff; --accent: #c8a96e;
-    }
+    :root { --ink: #1a1a18; --muted: #6b6b65; --rule: #e0ddd6; --bg: #faf9f6; --card: #ffffff; --accent: #c8a96e; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    header {
-      padding: 80px 24px 64px;
-      text-align: center;
-      border-bottom: 1px solid var(--rule);
-    }
-    .eyebrow {
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 500;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--ink);
-      max-width: 600px;
-      margin: 0 auto 16px;
-    }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+    header { padding: 80px 24px 64px; text-align: center; border-bottom: 1px solid var(--rule); }
+    .eyebrow { font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    h1 { font-family: 'Lora', serif; font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 400; line-height: 1.2; color: var(--ink); max-width: 600px; margin: 0 auto 16px; }
     h1 em { font-style: italic; color: var(--muted); }
-    .sub {
-      font-size: 15px;
-      color: var(--muted);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-      padding: 24px;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      background: var(--bg);
-    }
-    .card {
-      background: var(--card);
-      padding: 44px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      border-radius: 16px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: rise 0.6s ease forwards;
-    }
+    .sub { font-size: 15px; color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.7; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; padding: 24px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--bg); }
+    .card { background: var(--card); padding: 44px 40px; display: flex; flex-direction: column; gap: 24px; border-radius: 16px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); opacity: 0; transform: translateY(20px); animation: rise 0.6s ease forwards; }
     @keyframes rise { to { opacity: 1; transform: translateY(0); } }
-    .quote-mark {
-      font-family: 'Lora', serif;
-      font-size: 64px;
-      line-height: 1;
-      color: var(--accent);
-      opacity: 0.4;
-      margin-bottom: -16px;
-    }
-    .quote-text {
-      font-family: 'Lora', serif;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--ink);
-      flex: 1;
-    }
-    .card-footer {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding-top: 20px;
-    }
-    .client-num {
-      font-family: 'Lora', serif;
-      font-size: 20px;
-      color: var(--accent);
-      opacity: 0.5;
-      min-width: 28px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-    .avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--rule);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-    }
+    .quote-mark { font-family: 'Lora', serif; font-size: 64px; line-height: 1; color: var(--accent); opacity: 0.4; margin-bottom: -16px; }
+    .quote-text { font-family: 'Lora', serif; font-size: 16px; line-height: 1.75; color: var(--ink); flex: 1; }
+    .card-footer { display: flex; align-items: center; gap: 14px; padding-top: 20px; }
+    .client-num { font-family: 'Lora', serif; font-size: 20px; color: var(--accent); opacity: 0.5; min-width: 28px; text-align: center; flex-shrink: 0; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--rule); overflow: hidden; flex-shrink: 0; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .name { font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: var(--ink); }
     .context { font-size: 12px; color: var(--muted); margin-top: 2px; }
-    .card.featured {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 48px;
-      background: #fdf8f1;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
+    .card.featured { grid-column: 1 / -1; flex-direction: row; align-items: flex-start; gap: 48px; background: #fdf8f1; box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-radius: 16px; }
     .card.featured .quote-text { font-size: 18px; }
     .card.featured .card-body { flex: 1; }
-    .card.featured .card-footer {
-      padding: 0;
-      min-width: 200px;
-      align-self: flex-end;
-    }
+    .card.featured .card-footer { padding: 0; min-width: 200px; align-self: flex-end; }
     footer { padding: 48px 24px; text-align: center; }
-    .cta-label {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-    .cta-link {
-      display: inline-block;
-      font-family: 'Lora', serif;
-      font-size: 18px;
-      color: var(--ink);
-      text-decoration: none;
-      border-bottom: 1.5px solid var(--accent);
-      padding-bottom: 2px;
-      transition: color 0.2s;
-    }
+    .cta-label { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .cta-link { display: inline-block; font-family: 'Lora', serif; font-size: 18px; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 2px; transition: color 0.2s; }
     .cta-link:hover { color: var(--accent); }
     @media (max-width: 680px) {
       .card.featured { flex-direction: column; gap: 24px; }
@@ -164,11 +45,10 @@
   </style>
 </head>
 <body>
-
   <header>
     <p class="eyebrow">Wall of Love &#9825;</p>
     <h1>101 people.<br><em>One experiment.</em></h1>
-    <p class="sub">Hey! I'm Kyle. I'm on a mission to coach 101 strangers and friends to get crystal clear on what they want... and actually go after it.<br>These are their words.</p>
+    <p class="sub">Hey! I'm Kyle.<br>I'm on a mission to coach 101 strangers and friends to get crystal clear on what they want... and actually go after it.<br>These are their words.</p>
   </header>
 
   <div class="grid" id="grid"></div>
@@ -179,90 +59,51 @@
   </footer>
 
   <script>
-    const clients = [
+    var clients = [
       // ============================================================
       // HOW TO ADD A NEW CLIENT:
       // 1. Add a new object at the END of this array (below all others)
-      // 2. Increment `num` by 1 from the last entry
-      // 3. Add their photo to the `images/` folder as `firstname_clientnumber.jpg`
+      // 2. Increment num by 1 from the last entry
+      // 3. Add their photo to the images/ folder as firstname_clientnumber.jpg
       // 4. Fill in name, occupation, img path, and quote
-      //
-      // The page will automatically:
-      //   - Display newest clients first (reverse order of this array)
-      //   - Pick a random card as the featured (wide) card on each load
-      //
-      // DO NOT reorder existing entries — order = client number = chronological
+      // The page will automatically display newest first and pick a random featured card.
+      // DO NOT reorder existing entries.
       // ============================================================
-      {
-        num: 1,
-        name: "Prosper C.",
-        occupation: "Founder & Content Creator",
-        img: "images/prosper_1.jpg",
-        quote: "Thank you for being my homie and I really appreciate you for always pushing me to grow and keeping my head screwed on right. Thank you for being there when I was an addict and believing in me instead of giving up on me. Thanks for always checking up on me."
-      },
-      {
-        num: 2,
-        name: "Vikram J.",
-        occupation: "College Student",
-        img: "images/vikram_2.jpg",
-        quote: "Met with Kyle just now, talked about all my specific problems — social anxiety, second-guessing myself, goals, consistency, accountability, social activity, physical wellbeing. He was incredibly helpful and very oriented to the way I learn from the get-go. Asking me what I wanted and forcing me to really think about it helped me realize what goals I needed to set. His tips were, oddly, exactly what I needed to hear. It really gave me clarity and a clearing of my mental vision. Really fw his energy."
-      },
-      {
-        num: 3,
-        name: "Kirsten A.",
-        occupation: "Writer",
-        img: "images/kirsten_3.jpg",
-        quote: "Speaking with Kyle was really helpful — it got me thinking about the things I'm struggling with in a different way. Our conversation encouraged me to not worry or fixate on the past, especially if it doesn't serve a purpose. I was able to dig deeper and better understand the underlying reasons I struggle with confidence and faith in myself. I was also able to envision what I want and how to achieve it, which helps me stay committed to my goals. Very glad I was able to join this coaching call."
-      },
-      {
-        num: 4,
-        name: "Aaron C.",
-        occupation: "Software Engineer",
-        img: "images/aaron_4.jpg",
-        quote: "I just finished my 1-on-1 coaching session with Kyle, and it was a total game-changer. I've spent a lot of time watching videos and reading books, but Kyle was able to point out exactly where I was going wrong with my boundaries and confidence in real-time. He didn't just give me a theory — he gave me practical steps I can actually use. I walked away feeling way more clear on how to move past the friend zone and actually build attraction. I'm 100% sold on the program and can't wait to get started."
-      },
-      {
-        num: 5,
-        name: "Rahman M.",
-        occupation: "Software Engineer",
-        img: "images/rahman_5.jpg",
-        quote: "Hey bro, I sincerely want to thank you for absolutely everything you've done. You are so receptive and give your all to everything you do for me. I've been trying to put my all into becoming the ideal Rahman. I feel like I've grown so so much. It's only been 2 weeks in the program and I feel such rapid growth from you alone. I feel fucking amazing."
-      }
+      { num: 1, name: "Prosper C.", occupation: "Founder & Content Creator", img: "images/prosper_1.jpg", quote: "Thank you for being my homie and I really appreciate you for always pushing me to grow and keeping my head screwed on right. Thank you for being there when I was an addict and believing in me instead of giving up on me. Thanks for always checking up on me." },
+      { num: 2, name: "Vikram J.", occupation: "College Student", img: "images/vikram_2.jpg", quote: "Met with Kyle just now, talked about all my specific problems — social anxiety, second-guessing myself, goals, consistency, accountability, social activity, physical wellbeing. He was incredibly helpful and very oriented to the way I learn from the get-go. Asking me what I wanted and forcing me to really think about it helped me realize what goals I needed to set. His tips were, oddly, exactly what I needed to hear. It really gave me clarity and a clearing of my mental vision. Really fw his energy." },
+      { num: 3, name: "Kirsten A.", occupation: "Writer", img: "images/kirsten_3.jpg", quote: "Speaking with Kyle was really helpful — it got me thinking about the things I'm struggling with in a different way. Our conversation encouraged me to not worry or fixate on the past, especially if it doesn't serve a purpose. I was able to dig deeper and better understand the underlying reasons I struggle with confidence and faith in myself. I was also able to envision what I want and how to achieve it, which helps me stay committed to my goals. Very glad I was able to join this coaching call." },
+      { num: 4, name: "Aaron C.", occupation: "Software Engineer", img: "images/aaron_4.jpg", quote: "I just finished my 1-on-1 coaching session with Kyle, and it was a total game-changer. I've spent a lot of time watching videos and reading books, but Kyle was able to point out exactly where I was going wrong with my boundaries and confidence in real-time. He didn't just give me a theory — he gave me practical steps I can actually use. I walked away feeling way more clear on how to move past the friend zone and actually build attraction. I'm 100% sold on the program and can't wait to get started." },
+      { num: 5, name: "Rahman M.", occupation: "Software Engineer", img: "images/rahman_5.jpg", quote: "Hey bro, I sincerely want to thank you for absolutely everything you've done. You are so receptive and give your all to everything you do for me. I've been trying to put my all into becoming the ideal Rahman. I feel like I've grown so so much. It's only been 2 weeks in the program and I feel such rapid growth from you alone. I feel fucking amazing." },
+      { num: 6, name: "Tony C.", occupation: "Professional Chef", img: "images/tony_6.jpg", quote: "FIRE COACHING CALL/WORKSHOP WITH KYLE. More clear on my vision now. The breathing/meditation exercise was so useful. Slowing down does help reset. Feels like my nervous system hit the factory reset." }
     ];
 
     function buildCard(client, featured) {
-      const card = document.createElement('div');
+      var card = document.createElement('div');
       card.className = 'card' + (featured ? ' featured' : '');
 
-      const body = document.createElement('div');
+      var body = document.createElement('div');
       body.className = 'card-body';
-      body.innerHTML =
-        '<div class="quote-mark">\u201C</div>' +
-        '<p class="quote-text">' + client.quote + '</p>';
+      body.innerHTML = '<div class="quote-mark">“</div><p class="quote-text">' + client.quote + '</p>';
 
-      const footer = document.createElement('div');
+      var footer = document.createElement('div');
       footer.className = 'card-footer';
-      footer.innerHTML =
-        '<div class="client-num">' + client.num + '</div>' +
-        '<div class="avatar"><img src="' + client.img + '" alt="' + client.name + '" /></div>' +
-        '<div><div class="name">' + client.name + '</div><div class="context">' + client.occupation + '</div></div>';
+      footer.innerHTML = '<div class="client-num">' + client.num + '</div><div class="avatar"><img src="' + client.img + '" alt="' + client.name + '" /></div><div><div class="name">' + client.name + '</div><div class="context">' + client.occupation + '</div></div>';
 
       card.appendChild(body);
       card.appendChild(footer);
-
       return card;
     }
 
     function render() {
-      const grid = document.getElementById('grid');
-      const ordered = [...clients].reverse();
-      const featuredIdx = Math.floor(Math.random() * ordered.length);
-      const featured = ordered[featuredIdx];
-      const rest = ordered.filter(function(_, i) { return i !== featuredIdx; });
-      const sorted = [featured].concat(rest);
+      var grid = document.getElementById('grid');
+      var ordered = clients.slice().reverse();
+      var featuredIdx = Math.floor(Math.random() * ordered.length);
+      var featured = ordered[featuredIdx];
+      var rest = ordered.filter(function(_, i) { return i !== featuredIdx; });
+      var sorted = [featured].concat(rest);
 
       sorted.forEach(function(client, i) {
-        const card = buildCard(client, i === 0);
+        var card = buildCard(client, i === 0);
         card.style.animationDelay = (i * 0.1) + 's';
         grid.appendChild(card);
       });
@@ -270,6 +111,5 @@
 
     render();
   </script>
-
 </body>
 </html>
